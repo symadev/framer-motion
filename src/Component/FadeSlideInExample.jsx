@@ -1,7 +1,29 @@
 
 import { motion } from "framer-motion";
+import { useEffect, useRef } from "react";
+import Typed from "typed.js";
 
 const FadeSlideInExample = () => {
+
+
+
+  const typedRef = useRef(null);
+
+  useEffect(() => {
+    const typed = new Typed(typedRef.current, {
+      strings: ["Programmer", "Designer","SoftWare Engineer"],
+      typeSpeed: 150,
+      backSpeed: 150,
+      loop: true,
+    });
+
+    return () => {
+      typed.destroy();
+    };
+  }, []);
+
+
+  
   const cardData = [
     {
       title: "Shoes",
@@ -31,7 +53,9 @@ const FadeSlideInExample = () => {
 
   return (
     <div className="min-h-screen bg-gray-900 p-6 flex flex-col items-center">
-      <h1 className="text-2xl font-bold text-white mb-6">Featured Products</h1>
+     <h1 className="text-2xl font-bold text-white  mb-6">I Am  
+        <span className="text-yellow-400  ml-2" ref={typedRef}></span>
+      </h1>
       <div className="flex flex-wrap justify-center">
         {cardData.map((card, index) => (
           <motion.div
